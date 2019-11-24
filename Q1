@@ -1,0 +1,75 @@
+	#include<iostream>
+	#include<conio.h>
+	#include<math.h>
+	using namespace std;
+		class equation
+		{
+			private:float a,b,c;
+			public: void getinfo(float  a, float b,float c );
+				void display( );
+				void equal(float  a, float b);
+				void imag( );
+				void real(float a,float b,float c);
+		};
+		void  equation :: getinfo(float aa,float bb,float cc)
+		{
+	                a=aa;
+			b=bb;
+		        c=cc;
+		}
+		void equation::display( )
+		{
+			cout<<endl;
+			cout<<"a="<<a<<'\t';
+			cout<<"b="<<b<<'\t';
+			cout<<"c="<<c<<endl;
+		}		
+
+void equation ::equal (float a,float b)
+		{
+			float x;
+			x = -b/(2*a);
+			cout<<"Roots are equal\n"<<x<<endl;
+		}
+		void equation :: imag( )
+		{
+			cout<<"Roots are imaginary";
+		}
+		void equation :: real(float a,float b,float det)
+		{
+			float x1,x2,temp;
+			temp = sqrt(det);
+			x1= (-b + temp)/(2*a);
+			x2 = (-b-temp)/(2*a);
+			cout<<"Roots are real\n";
+			cout<<"x1= "<<x1<<endl;
+			cout<<"x2 ="<<x2<<endl;
+		}
+		int main( )
+		{
+			class equation e;
+			float aa,bb,cc;
+			//clrscr( );
+			cout<<"Enter the coefficients of x^2, x and constant value respectively\n";
+			cin>>aa>>bb>>cc;
+			e.getinfo(aa,bb,cc);
+			e.display( );
+			if(aa==0)
+			{
+				float temp;
+				temp = cc/bb;
+				cout<<" Linear Roots"<<temp<<endl;
+			}
+			else
+			{
+				float det;
+				det = (bb*bb - 4*aa*cc);
+				if(det==0)
+				e.equal(aa,bb);
+				else if (det<0 )
+				          e.imag( );
+				else 
+				          e.real(aa,bb,cc );
+			}
+			return 0;
+		}
