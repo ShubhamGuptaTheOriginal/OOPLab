@@ -1,0 +1,96 @@
+#include <iostream>
+#include <iomanip>
+#include<conio.h>
+using namespace std;
+class    bank
+{
+char name[20];
+int acno;
+char actype[20];
+int bal;
+public :
+void opbal(void);
+void deposit(void);
+void withdraw(void);
+void display(void);
+};
+
+void bank :: opbal(void)
+{
+cout<<endl<<endl;
+cout<<"\nEnter Name :-\n";
+cin>>name;
+cout<<"\nEnter A/c no. :-\n";
+cin>>acno;
+cout<<"\nEnter A/c Type :-\n";
+cin>>actype;
+cout<<"\nEnter Opening Balance(Minimum balance of Rs 500 should be there):-\n";
+cin>>bal;
+}
+
+void bank :: deposit(void)
+{
+cout<<"\nEnter Deposit amount :-\n";
+int deposit=0;
+cin>>deposit;
+deposit=deposit+bal;
+cout<<"\nDeposit Balance = \n"<<deposit;
+bal=deposit;
+}
+
+void bank :: withdraw(void)
+{
+int withdraw;
+cout<<"\nBalance Amount = \n"<<bal;
+cout<<"\nEnter Withdraw Amount :-\n";
+cin>>withdraw;
+if(bal-withdraw<500)
+{cout<<"\nCan't take out this much amount as Minimum balance of 500 is required in the account\n";
+}
+else
+{bal=bal-withdraw;
+cout<<"\nAfter Withdraw Balance is \n"<<bal;
+}
+}
+
+void  bank :: display(void)
+{
+cout<<endl<<endl<<endl;
+cout<<setw(50)<<"\nDETAILS\n"<<endl;
+cout<<setw(50)<<"\nName: "<<name<<endl;
+cout<<setw(50)<<"\nA/c. No.: "<<acno<<endl;
+cout<<setw(50)<<"\nA/c Type: "<<actype<<endl;
+cout<<setw(50)<<"\nBalance: "<<bal<<endl;
+}
+
+int main()
+{
+//clrscr();
+bank o1;
+int choice;
+    do
+    {
+           cout<<"\nChoice List\n";
+           cout<<"1)  To assign Initial Value\n";
+         cout<<"2)  To Deposit\n";
+         cout<<"3)  To Withdraw\n";
+         cout<<"4)  To Display All Details\n";
+         cout<<"5)  EXIT\n";
+         cout<<"Enter your choice :-";
+         cin>>choice;
+         switch(choice)
+         {
+         case 1: o1.opbal();
+                     break;
+         case 2: o1.deposit();
+                     break;
+           case 3: o1.withdraw();
+                     break;
+         case 4: o1.display();
+                     break;
+            case 5: return 0;
+         }
+   }while(1);
+   return 0;
+
+}
